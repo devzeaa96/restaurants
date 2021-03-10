@@ -3,28 +3,31 @@ import React from 'react'
 import { StyleSheet, ScrollView, Image, Text, View } from 'react-native'
 import {Divider} from 'react-native-elements'
 import { useNavigation } from '@react-navigation/native'
+import { KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
+
+import LoginForm from '../../components/account/LoginForm'
 
 export default function Login() {
 
     return (
-        <ScrollView>
+        <KeyboardAwareScrollView>
             <Image
                 source={require("../../assets/PNG_LOGO.png")}
                 resizeMode="contain"
                 style={styles.image}
             />
             <View style={styles.container}>
-                <Text>Login form</Text>
+                <LoginForm/>
                 <CreateAccount/>
             </View>
             <Divider style={styles.divider}/>
-        </ScrollView>
+        </KeyboardAwareScrollView>
     )
 }
 
 function CreateAccount (props) {
     const navigation = useNavigation()
-    
+
     return(
         <Text style={styles.register}
                 onPress={() => navigation.navigate("register")}
